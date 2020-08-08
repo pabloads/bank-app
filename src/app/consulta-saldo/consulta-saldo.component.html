@@ -1,0 +1,58 @@
+<main role="main">
+    <section class="my-4">
+        <div class="container">
+            <h2>Consulta de Saldo</h2>
+        </div>
+      </section>
+
+  <section>
+    <div class="container">
+      <form method="get" #frm="ngForm" (ngSubmit)="consultarSaldo(frm)" class="form-inline">
+        <div class="form-group">
+          <label for="agencia">Agência</label>
+          <input type="text" id="agencia" name="agencia"
+            class="form-control" placeholder="Agência" style="width:150px"
+            [(ngModel)]="payload.agencia" required style="margin-left: 8px"/>
+        </div>
+
+        <div class="form-group">
+          <label for="conta" style="margin-left: 8px">Conta</label>
+          <input type="conta" id="conta" name="conta"
+            class="form-control" placeholder="Conta" style="width:150px"
+            [(ngModel)]="payload.conta" required style="margin-left: 8px"/>
+        </div>
+        <div class="form-group">
+            <label for="tipoConta" style="margin-left: 8px">Tipo da Conta</label>
+            <select class="form-control" id="tipoConta" style="width:150px" type="string" 
+            [(ngModel)]="payload.tipoConta" required style="margin-left: 8px">
+              <option value="CC">Corrente</option>
+              <option value="CP">Poupança</option>
+            </select>
+          </div>
+
+        <button type="submit" class="btn btn-primary"
+        [disabled]="frm.invalid" style="margin-left: 8px">Consultar</button >
+      </form>
+    </div>
+  </section>
+  <section>
+    <div class="container" style="margin-top: 40px;">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Agência</th>
+                <th scope="col">Conta</th>
+                <th scope="col">Saldo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{infoSaldo.agencyNumber}}</td>
+                <td>{{infoSaldo.accountNumber}}</td>
+                <td>{{infoSaldo.balance}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </section>
+</main>
